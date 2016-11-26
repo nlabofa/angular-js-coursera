@@ -94,3 +94,6 @@ body {
   position: absolute;
   right: 0px;
 }
+.spa{
+  font-weight: bold;font-size:20px;color:red;
+}
