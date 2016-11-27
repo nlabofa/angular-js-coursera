@@ -67,13 +67,19 @@ angular.module('confusionApp')
         };
     }])
 
-    .controller('DishDetailController', ['$scope','$routeParams','menuFactory', function ($scope, $routeParams, menuFactory) {
+    /*.controller('DishDetailController', ['$scope','$routeParams','menuFactory', function ($scope, $routeParams, menuFactory) {
 
        var dish= menuFactory.getDish(parseInt($routeParams.id,10));    
        $scope.dish = dish;
-       
+    }])*/
 
-    }]).controller('DishCommentController', ['$scope', function ($scope) {
+     .controller('DishDetailController', ['$scope','$stateParams','menuFactory', function ($scope, $stateParams, menuFactory) {
+
+       var dish= menuFactory.getDish(parseInt($stateParams.id,10));    
+       $scope.dish = dish;
+    }])
+
+    .controller('DishCommentController', ['$scope', function ($scope) {
 
     $scope.formComment = {
         author: "",
