@@ -25,7 +25,7 @@ angular.module('confusionApp', ['ngRoute'])
 
 'use strict';
 
-angular.module('confusionApp',  ['ui.router'])
+angular.module('confusionApp',  ['ui.router', 'ngResource'])
 
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
