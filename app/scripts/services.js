@@ -5,7 +5,7 @@ angular.module('confusionApp')
         //.service('menuFactory', ['$http', 'baseURL', function($http,baseURL)
         .service('menuFactory', ['$resource', 'baseURL', function($resource,baseURL)  {
 
-	        var promotions = [
+	        /*var promotions = [
 				                {
 		                          _id:0,
 		                          name:'Weekend Grand Buffet', 
@@ -15,28 +15,33 @@ angular.module('confusionApp')
 		                          description:'Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person ',
 				                }
 				                
-				            ];
+				            ];*/
 
                         /*this.getDishes = function(){
                             return $http.get(baseURL+"dishes");
                             };*/
                         /* this.getDish = function (index) {
                             return $http.get(baseURL+"dishes/"+index);
-                        };*/
+                        };
+                        this.getPromotion = function(index){
+		                	return promotions[index];
+		                };*/
                         this.getDishes = function(){
                             return $resource(baseURL+"dishes/:id",null,  {'update':{method:'PUT' }});
-                        };    
-		                this.getPromotion = function(index){
-		                	return promotions[index];
-		                };
+                        };
+                        this.getPromotion = function() {
+							// return promotions[index];
+							return $resource(baseURL + 'promotions/:id', null, {'update': { method: 'PUT' }});
+						};    
+		                
 
 
         }])
 
 
-.factory('corporateFactory', function() {
+.factory('corporateFactory',['$resource', 'baseURL', function($resource, baseURL) {
     
-            var corpfac = {};
+           /* var corpfac = {};
     
             var leadership = [
                 {
@@ -77,7 +82,24 @@ angular.module('confusionApp')
             corpfac.getLeader = function (index) { 
             	return leadership[index];
             	 };
-            return corpfac;
+            return corpfac;*/
+
+             var corpfac = {};
+             corpfac.getLeaders = function(){
+                return $resource(baseURL+"leadership/:id",null,  {'update':{method:'PUT' }});
+                };
+                return corpfac;
     
-        })
+        }])
+
+		.factory('feedbackFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+
+			var feedback = {};
+
+			feedback.postFeedback = function() {
+				return $resource(baseURL + "feedback/:id", null, { 'save': { method: 'POST' } });
+			};
+
+			return feedback;
+		}])
 ;
