@@ -228,6 +228,19 @@
       },
       "comments": "post action to save",
       "id": 1
+    },
+    {
+      "mychannel": "tel",
+      "firstName": "xtiana",
+      "lastName": "okedeji",
+      "agree": true,
+      "email": "xt@gmail.com",
+      "tel": {
+        "areaCode": "234",
+        "number": "08171711"
+      },
+      "comments": "testing the tester",
+      "id": 2
     }
   ]
 }

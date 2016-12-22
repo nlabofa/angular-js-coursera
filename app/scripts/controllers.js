@@ -8,6 +8,7 @@ angular.module('confusionApp')
         $scope.filtText = '';
         $scope.showMenu = false;
         $scope.message = "Loading ...";
+        
                 menuFactory.getDishes().query(
                 function(response) {
                     $scope.dishes = response;
